@@ -50,46 +50,52 @@ function modalClose(event) {
 overlayBox.addEventListener('click', modalClose);
 
 function keyPress(event) {
+   
+    let currentIndex = 0;
+     galleryItems.forEach(image => {
+           if (image.original === lightboxImage.src) {
+               currentIndex = galleryItems.indexOf(image);
+            }
+     })
+    
+    
     if (event.code === 'Escape') {
         modalClose();
     }
     
     if (event.code === 'ArrowRight') {
-        nextPictuere(event);
+
+        const nextIndex = currentIndex + 1;
+
+        lightboxImage.src = galleryItems[nextIndex].original;
+        // sprayImage.indexOf(event.target.)
+       
+        // const img = sprayImage.find(element => element.dataset.index == currentImage);
+ 
+        // lightboxImage.src = img.dataset.source;
+        // lightboxImage.alt = img.alt;
+   
+        
     }
     if (event.code === 'ArrowLeft') {
-        previousPicture(event);
+        const nextIndex = currentIndex - 1;
+
+        lightboxImage.src = galleryItems[nextIndex].original;
+    //     let imageIndex = event.target.firstElementChild.dataset.index;
+    // let nextIndex = Number(imageIndex) - 1;
+    //  const img = sprayImage.find(element => element.dataset.index == nextIndex);
+   
+    // console.log(img);
+
+    //   lightboxImage.src = img.dataset.source;
+    //   lightboxImage.alt = img.alt;
         }
          
     
 }
 
-let currentImage = 0;
+
     
-function nextPictuere(event) {
-
-     currentImage = Number(event.target.firstElementChild.dataset.index);
-    
-   currentImage += 1;
-    const img = sprayImage.find(element => element.dataset.index == currentImage);
-    
-
-  console.log(img);
- 
- lightboxImage.src = img.dataset.source;
-      lightboxImage.alt = img.alt;
-}
-
- function previousPicture(event) {
-     let imageIndex = event.target.firstElementChild.dataset.index;
-    let nextIndex = Number(imageIndex) - 1;
-     const img = sprayImage.find(element => element.dataset.index == nextIndex);
-   
-    console.log(img);
-
-      lightboxImage.src = img.dataset.source;
-      lightboxImage.alt = img.alt;
- }
 
 
 
